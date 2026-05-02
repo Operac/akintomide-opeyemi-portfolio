@@ -49,8 +49,8 @@ export default function ContactForm() {
               Let's build <br />
               something <span className="text-primary italic">extraordinary</span>.
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-sans font-light mb-12">
-              Building the future requires the right collaboration. My inbox is open for selective projects and engineering challenges.
+             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-sans font-light mb-12">
+              I'm currently open to full-time roles, freelance projects, and collaboration opportunities. Whether you need a complete web application or want to discuss tech let's talk.
             </p>
 
             <div className="space-y-8">

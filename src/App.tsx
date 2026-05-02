@@ -66,6 +66,31 @@ export default function App() {
           </div>
         </div>
 
+        <section id="about" className="py-24 border-t border-white/10">
+          <div className="container px-4 mx-auto">
+            <div className="grid grid-cols-12 gap-8">
+              <div className="col-span-12 lg:col-span-3">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-6">02 // About</span>
+                <h3 className="text-4xl font-heading italic tracking-tight">Bio<br/>Notes</h3>
+              </div>
+              
+              <div className="col-span-12 lg:col-span-9">
+                <div className="text-muted-foreground leading-relaxed font-sans font-light text-lg max-w-3xl">
+                  <p className="mb-6">
+                    I'm a Full Stack Web Developer trained at Anchorsoft Academy, specializing in the MERN stack. I transform complex problems into elegant, user-friendly solutions.
+                  </p>
+                  <p className="mb-6">
+                    My journey into tech started with a curiosity about how things work on the web. Today, I build end-to-end applications — from database architecture to pixel-perfect interfaces — with a focus on performance and scalability.
+                  </p>
+                  <p>
+                    When I'm not coding, I'm exploring new technologies, contributing to open source, or refining my skills through hands-on projects.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <Skills />
 
         <section id="experience" className="py-24 border-t border-white/10">
@@ -78,32 +103,40 @@ export default function App() {
               
               <div className="col-span-12 lg:col-span-9 space-y-16">
                 <ExperienceItem 
+                  title="Full Stack Development Program"
+                  company="Anchorsoft Academy — 2025/2026"
+                  period="2025/2026"
+                  description="Intensive training in modern web development. Mastered MERN stack, REST API design, authentication systems, database optimization, and deployment strategies. Completed multiple capstone projects."
+                />
+                <ExperienceItem 
+                  title="Full Stack Web Developer"
+                  company="Freelance / Self-Employed — 2025/2026"
+                  period="2025/2026"
+                  description="Building full-stack MERN applications for clients. Specializing in e-commerce platforms, SaaS dashboards, and real-time applications. Focus on clean architecture and scalable solutions."
+                />
+                <ExperienceItem 
                   title="OltraHMS — Hospital Management System"
                   company="Independent Project // Lead Architect"
-                  period="2024"
+                  period="2025/2026"
                   description="Engineered a multi-role HMS covering patient care, pharmacy, radiology, and telemedicine. Integrated real-time chat (Socket.io), WebRTC video, and offline PWA capabilities. Built with React, TypeScript, Node.js, Prisma, and PostgreSQL."
-                  index={1}
                 />
                 <ExperienceItem 
                   title="3D Coin Sculptor"
                   company="Independent Project // AI Research"
-                  period="2024"
+                  period="2025/2026"
                   description="Built a no-install 3D design tool that uses in-browser AI to convert portraits into 3D meshes for casting and printing. Powered by Three.js and ONNX."
-                  index={2}
                 />
                 <ExperienceItem 
                   title="Ecommerce Fashion"
                   company="Independent Project // Architectural Lead"
-                  period="2024"
+                  period="2025/2026"
                   description="Designed and deployed a high-performance fashion retail platform. Focused on responsive UX, advanced state management, and seamless integration with payment architectures."
-                  index={3}
                 />
                 <ExperienceItem 
                   title="Ayanfe Market & Citygrid Gas"
                   company="Independent Project // Full Stack"
-                  period="2023 — 2024"
+                  period="2025/2026"
                   description="Launched an escrow marketplace platform (Prisma/Swagger) and a utility services platform (React/Vite/Tailwind) focused on energy delivery logistics."
-                  index={4}
                 />
               </div>
             </div>
@@ -140,9 +173,9 @@ export default function App() {
 function ExperienceItem({ title, company, period, description, index }: any) {
   return (
     <div className="grid md:grid-cols-[200px_1fr] gap-4 md:gap-12 group text-left">
-      <div className="text-[#444] font-mono text-[10px] pt-1 uppercase tracking-widest">
-        {period} // 0{index}
-      </div>
+        <div className="text-[#444] font-mono text-[10px] pt-1 uppercase tracking-widest">
+          {period}
+        </div>
       <div>
         <h4 className="text-2xl font-heading italic mb-2 group-hover:text-primary transition-colors">{title}</h4>
         <div className="text-muted-foreground font-sans text-sm uppercase tracking-widest mb-6 border-b border-white/5 pb-2 inline-block">

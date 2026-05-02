@@ -23,9 +23,9 @@ export default function Hero() {
               OPEYEMI<br/>
               <span className="italic ml-[0.5em]">AKINTOMIDE</span>
             </h1>
-            <p className="mt-12 text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed font-sans font-light">
-              I build production-grade web applications end-to-end—from database schema to deployed UI. 
-              Specializing in JavaScript/TypeScript ecosystems with a focus on scalability and precision.
+             <p className="mt-12 text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed font-sans font-light">
+               I build production-grade web applications end-to-end—from database schema to deployed UI. 
+               Specializing in JavaScript/TypeScript ecosystems with a focus on scalability and precision.
             </p>
           </div>
           
