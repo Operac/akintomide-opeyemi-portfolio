@@ -43,7 +43,7 @@ export default function App() {
         <div id="projects" className="py-24 border-t border-white/10">
           <div className="container px-4 mx-auto">
             <div className="grid grid-cols-12 gap-8 items-start">
-              <div className="col-span-12 lg:col-span-3 sticky top-32">
+              <div className="col-span-12 lg:col-span-3 lg:sticky lg:top-32">
                 <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-6">01 // Selected Work</span>
                 <h3 className="text-4xl font-heading italic tracking-tight mb-8">Featured <br/>Installations</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-[200px]">
@@ -80,7 +80,7 @@ export default function App() {
                     I'm a Full Stack Web Developer trained at Anchorsoft Academy, specializing in the MERN stack. I transform complex problems into elegant, user-friendly solutions.
                   </p>
                   <p className="mb-6">
-                    My journey into tech started with a curiosity about how things work on the web. Today, I build end-to-end applications — from database architecture to pixel-perfect interfaces — with a focus on performance and scalability.
+                    My journey into tech started with a curiosity about how things work on the web. Today, I build end-to-end applications from database architecture to pixel-perfect interfaces with a focus on performance and scalability.
                   </p>
                   <p>
                     When I'm not coding, I'm exploring new technologies, contributing to open source, or refining my skills through hands-on projects.

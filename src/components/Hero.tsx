@@ -24,7 +24,7 @@ export default function Hero() {
               <span className="italic ml-[0.5em]">AKINTOMIDE</span>
             </h1>
              <p className="mt-12 text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed font-sans font-light">
-               I build production-grade web applications end-to-end—from database schema to deployed UI. 
+               I build production-grade web applications end-to-end from database schema to deployed UI. 
                Specializing in JavaScript/TypeScript ecosystems with a focus on scalability and precision.
             </p>
           </div>
@@ -49,7 +49,7 @@ export default function Hero() {
             
             <div className="text-left lg:text-right text-[11px] text-[#666] leading-relaxed uppercase tracking-widest space-y-1">
               <p>Currently Architecting Digital Solutions</p>
-              <p>Available for Selective Collaborations</p>
+              <p>Available for CollaborationsFull-time & Contract roles</p>
             </div>
 
             <Button variant="outline" className="rounded-none border-white/10 group hover:border-white/40 transition-colors bg-white/5" asChild>
