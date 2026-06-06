@@ -11,16 +11,7 @@ import ProjectCard from "./components/ProjectCard";
 import Services from "./components/Services";
 import Skills from "./components/Skills";
 import ContactForm from "./components/ContactForm";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  tech: string[];
-  github: string;
-  demo?: string;
-  image: string;
-}
+import { projects as projectsData, type Project } from "./data/projects";
 
 /* ─── Custom spring cursor ─────────────────────────────────────────────── */
 function CustomCursor() {
@@ -100,7 +91,7 @@ function Marquee() {
             key={i}
             className="inline-flex items-center gap-5 text-[10px] uppercase tracking-[0.25em] font-mono text-muted-foreground/50 px-5"
           >
-            <span className="w-1 h-1 rounded-full inline-block" style={{ background: "var(--highlight)", opacity: 0.5 }} />
+            <span className="w-1 h-1 rounded-full inline-block marquee-dot" />
             {item}
           </span>
         ))}
@@ -160,14 +151,7 @@ function StatCard({ value, label }: { value: string; label: string }) {
 
 /* ─── Main App ──────────────────────────────────────────────────────────── */
 export default function App() {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetch("/api/projects")
-      .then((r) => r.json())
-      .then(setProjects)
-      .catch((err) => console.error("Failed to load projects", err));
-  }, []);
+  const projects: Project[] = projectsData;
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-white/20 selection:text-white font-sans">
