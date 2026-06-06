@@ -47,6 +47,7 @@ async function startServer() {
       description: "Escrow marketplace platform facilitated through a middleman model. Full-stack with React frontend and Node.js/Prisma backend with Swagger API docs.",
       tech: ["React", "Node.js", "Prisma", "Swagger", "Express"],
       github: "https://github.com/Operac/ayanfe-market",
+      demo: "https://ayanfehub-frontend.vercel.app/",
       image: "/market.jpg"
     },
     {
@@ -55,7 +56,7 @@ async function startServer() {
       description: "Frontend for a gas/utility delivery service, built with high-performance focus and responsive design.",
       tech: ["React", "Vite", "Tailwind CSS"],
       github: "https://github.com/Operac/citygrid-gas",
-      demo: "https://citygrid-gas.vercel.app",
+      demo: "https://citygrid-gas-frontend.vercel.app/",
       image: "/gas.jpg"
     }
   ];

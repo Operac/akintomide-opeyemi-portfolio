@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,8 +9,8 @@
 @theme inline {
   --font-heading: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
-  --font-mono: 'Geist Variable', ui-monospace;
-  
+  --font-mono: "JetBrains Mono", "Geist Variable", ui-monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -30,79 +30,122 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
+  --color-highlight: var(--highlight);
+  --color-highlight-muted: var(--highlight-muted);
+
   --radius-sm: 0.125rem;
   --radius-md: 0.25rem;
   --radius-lg: 0.5rem;
 }
 
 :root {
-    --background: #0F1113;
-    --foreground: #F2F2F2;
-    --card: #141719;
-    --card-foreground: #F2F2F2;
-    --popover: #141719;
-    --popover-foreground: #F2F2F2;
-    --primary: #FFFFFF;
-    --primary-foreground: #0F1113;
-    --secondary: #1A1D20;
-    --secondary-foreground: #F2F2F2;
-    --muted: #1A1D20;
-    --muted-foreground: #888888;
-    --accent: #1A1D20;
-    --accent-foreground: #FFFFFF;
-    --destructive: #EF4444;
-    --destructive-foreground: #F2F2F2;
-    --border: rgba(255, 255, 255, 0.1);
-    --input: rgba(255, 255, 255, 0.1);
-    --ring: #FFFFFF;
+  --background: #09090C;
+  --foreground: #F2F2F2;
+  --card: #111115;
+  --card-foreground: #F2F2F2;
+  --popover: #111115;
+  --popover-foreground: #F2F2F2;
+  --primary: #FFFFFF;
+  --primary-foreground: #09090C;
+  --secondary: #18181B;
+  --secondary-foreground: #F2F2F2;
+  --muted: #18181B;
+  --muted-foreground: #71717A;
+  --accent: #18181B;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #F2F2F2;
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.07);
+  --ring: #FFFFFF;
+  /* Design system accent — electric blue for dev portfolio */
+  --highlight: #4F90FF;
+  --highlight-muted: rgba(79, 144, 255, 0.1);
+  --highlight-border: rgba(79, 144, 255, 0.25);
 }
 
-.dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+/* Marquee animation */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+/* Blink cursor for mono labels */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply font-sans;
   }
+
   * {
     @apply border-border outline-ring/50;
-    }
+  }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Hide default cursor on desktop */
+  @media (pointer: fine) {
+    html, * { cursor: none !important; }
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.12); }
+
+  /* Film-grain noise overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+  }
+
+  /* Project card glow — driven by CSS custom properties set from JS */
+.card-glow {
+  opacity: var(--go, 0);
+  background: radial-gradient(280px circle at var(--gx, 0px) var(--gy, 0px), rgba(79,144,255,0.055), transparent 70%);
+}
+
+/* Project card image default filter */
+.project-img {
+  filter: grayscale(0.6) brightness(0.85);
+}
+
+/* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
-  html {
-    @apply font-sans;
-    }
+    .animate-marquee { animation: none; }
+  }
+
+  /* Accessible focus visible */
+  :focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 3px;
+  }
 }

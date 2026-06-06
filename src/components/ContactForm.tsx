@@ -1,136 +1,94 @@
-import * as React from "react"
-import { useState } from "react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Loader2, Send } from "lucide-react";
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-      
-      const data = await response.json();
-      if (data.success) {
-        setSuccess(true);
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setSuccess(false), 5000);
-      }
-    } catch (error) {
-      console.error("Contact error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <section id="contact" className="py-24 border-t border-white/10">
+    <section id="contact" className="py-24 border-t border-white/[0.07]" aria-label="Contact">
       <div className="container px-4 mx-auto">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-4">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-6">04 // Access</span>
-            <h3 className="text-4xl md:text-5xl font-heading italic tracking-tight mb-8">
-              Let's build <br />
-              something <span className="text-primary italic">extraordinary</span>.
-            </h3>
-             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-sans font-light mb-12">
-              I'm currently open to full-time roles, freelance projects, and collaboration opportunities. Whether you need a complete web application or want to discuss tech let's talk.
-            </p>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-            <div className="space-y-8">
-              <div className="group">
-                <p className="text-[10px] uppercase text-[#555] mb-2 tracking-widest">Source Control</p>
-                <a 
-                  href="https://github.com/Operac" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-2xl font-heading hover:italic transition-all inline-block"
-                >
-                  github.com/Operac
-                </a>
-              </div>
-              <div className="group">
-                <p className="text-[10px] uppercase text-[#555] mb-2 tracking-widest">Professional Network</p>
-                <a 
-                  href="https://linkedin.com/in/akintomideopeyemi" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-2xl font-heading hover:italic transition-all inline-block"
-                >
-                  linkedin.com/in/opeyemi
-                </a>
-              </div>
-            </div>
-          </div>
-
+          {/* Left panel — info + socials */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4"
+          >
+            <span className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-6 font-mono">
+              05 // Access
+            </span>
+            <h3 className="text-4xl md:text-5xl font-heading italic tracking-tight mb-8">
+              Let's build{" "}
+              <span className="block">something</span>
+              <span style={{ color: "var(--highlight)" }} className="italic">
+                extraordinary.
+              </span>
+            </h3>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-light mb-12">
+              Open to full-time roles, freelance projects, and collaboration opportunities.
+              Whether you need a complete web application or want to talk tech, let's connect.
+            </p>
+
+            {/* Contact links */}
+            <div className="space-y-7">
+              {[
+                {
+                  label: "Source Control",
+                  text: "github.com/Operac",
+                  href: "https://github.com/Operac",
+                },
+                {
+                  label: "Professional Network",
+                  text: "linkedin.com/in/opeyemi",
+                  href: "https://linkedin.com/in/akintomideopeyemi",
+                },
+                {
+                  label: "Direct Line",
+                  text: "akintomide.opeyemi83@gmail.com",
+                  href: "mailto:akintomide.opeyemi83@gmail.com",
+                },
+              ].map(({ label, text, href }) => (
+                <div key={label}>
+                  <p className="text-[9px] uppercase text-muted-foreground/50 mb-1.5 tracking-widest font-mono">
+                    {label}
+                  </p>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="text-base font-heading hover:italic transition-all inline-block hover:opacity-70 break-all"
+                  >
+                    {text}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right panel — Typeform embed */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-8"
           >
-            <div className="border border-white/10 p-8 md:p-12 bg-white/2">
-              <form onSubmit={handleSubmit} className="space-y-12">
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div className="space-y-4 text-left">
-                    <label className="text-[10px] uppercase tracking-widest text-muted-foreground">01 / Full Name</label>
-                    <input 
-                      required 
-                      className="w-full bg-transparent border-b border-white/10 py-2 focus:border-white transition-colors outline-none font-sans"
-                      placeholder="Jane Doe" 
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-4 text-left">
-                    <label className="text-[10px] uppercase tracking-widest text-muted-foreground">02 / Digital Address</label>
-                    <input 
-                      required 
-                      type="email" 
-                      className="w-full bg-transparent border-b border-white/10 py-2 focus:border-white transition-colors outline-none font-sans"
-                      placeholder="jane@example.com" 
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                </div>
-                <div className="space-y-4 text-left">
-                  <label className="text-[10px] uppercase tracking-widest text-muted-foreground">03 / Message</label>
-                  <textarea 
-                    required 
-                    placeholder="Tell me about your project..." 
-                    className="w-full bg-transparent border-b border-white/10 py-2 focus:border-white transition-colors outline-none font-sans min-h-[100px] resize-none"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-                <Button type="submit" className="rounded-none h-14 px-12 text-[10px] uppercase tracking-[0.3em] font-sans font-medium hover:bg-white hover:text-black transition-all" disabled={loading}>
-                  {loading ? (
-                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                  ) : success ? (
-                    "Transmission Sent"
-                  ) : (
-                    "Dispatch Message"
-                  )}
-                </Button>
-              </form>
+            <div className="border border-white/[0.08]" style={{ background: "rgba(255,255,255,0.01)" }}>
+              <iframe
+                src="https://form.typeform.com/to/rx3gbqpn"
+                width="100%"
+                height="650"
+                frameBorder="0"
+                title="Contact form"
+                style={{
+                  display: "block",
+                }}
+                allow="geolocation; microphone; camera"
+              />
             </div>
+            <p className="text-[9px] text-muted-foreground/30 font-mono uppercase tracking-widest mt-4">
+              I reply within 24 hours
+            </p>
           </motion.div>
         </div>
       </div>
