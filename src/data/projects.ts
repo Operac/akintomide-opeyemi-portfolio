@@ -33,7 +33,7 @@ export const projects: Project[] = [
     description: "A high-end fashion e-commerce platform featuring a sleek production-grade UI, seamless product discovery, and optimized checkout flow.",
     tech: ["React", "Vite", "Tailwind CSS", "Node.js"],
     github: "https://github.com/Operac",
-    demo: "https://ecommerce-fashion-git-main-operacs-projects.vercel.app/",
+    demo: "https://ecommerce-fashion-xi.vercel.app/",
     image: "/fashion-store.jpg",
   },
   {
